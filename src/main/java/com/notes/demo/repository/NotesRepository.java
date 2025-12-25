@@ -11,7 +11,7 @@ public interface NotesRepository extends JpaRepository<Notes, Integer> {
 
 
 
-    List<Notes> findNoteById (Integer id);
+    Notes findSingelNoteById (Integer id);
 
 
 
