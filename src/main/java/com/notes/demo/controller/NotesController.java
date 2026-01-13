@@ -16,7 +16,7 @@ public class NotesController {
 
     private final NotesService notesService;
 
-    @GetMapping("/get-notes")
+    @GetMapping("/fetch-notes")
     public ResponseEntity getAllNotes(){
         return ResponseEntity.ok().body(notesService.getAllNotes());
     }
@@ -41,5 +41,10 @@ public class NotesController {
         return ResponseEntity.ok().body("note deleted successfully");
     }
 
+    @GetMapping("/get-note/{id}")
+    public ResponseEntity getNote(@PathVariable Integer id){
+        notesService.getNote(id);
+        return ResponseEntity.ok().body(notesService.getNote(id));
+    }
 
 }

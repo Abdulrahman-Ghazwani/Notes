@@ -1,4 +1,4 @@
-package Api;
+package com.notes.demo.Api;
 
 public class ApiException extends RuntimeException{
 

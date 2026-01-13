@@ -1,6 +1,6 @@
 package com.notes.demo.service;
 
-import Api.ApiException;
+import com.notes.demo.Api.ApiException;
 import com.notes.demo.model.Notes;
 import com.notes.demo.repository.NotesRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +17,14 @@ public class NotesService {
 
     public List<Notes> getAllNotes(){
         return notesRepository.findAll();
+    }
+
+    public Notes getNote(Integer id){
+        Notes note = notesRepository.findSingelNoteById(id);
+        if (note == null){
+            throw new RuntimeException("note not found!");
+        }
+        return note;
     }
 
     public void addNote(Notes notes){
@@ -38,7 +46,9 @@ public class NotesService {
         if (n == null){
             throw new ApiException("note not found!");
         }
+        n.setTitle(notes.getTitle());
         n.setNote(notes.getNote());
+        n.setEndingDate(notes.getEndingDate());
         notesRepository.save(n);
     }
 
