@@ -1,12 +1,14 @@
 package com.notes.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -29,7 +31,7 @@ public class Notes {
     @Column(nullable = false, updatable = false)
     private LocalDate creationDate;
 
-    @FutureOrPresent
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate endingDate;
 
 
