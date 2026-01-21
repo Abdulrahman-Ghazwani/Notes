@@ -3,22 +3,20 @@ package com.notes.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.FutureOrPresent;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @NoArgsConstructor
 @Setter
 @Getter
-public class Notes {
+public class Note {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false, length = 20)
     private String title;
@@ -33,6 +31,11 @@ public class Notes {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate endingDate;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 
 }

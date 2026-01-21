@@ -1,12 +1,11 @@
 package com.notes.demo.controller;
 
-import com.notes.demo.model.Notes;
+import com.notes.demo.model.Note;
+import com.notes.demo.model.User;
 import com.notes.demo.service.NotesService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -24,26 +23,26 @@ public class NotesController {
 
 
     @PostMapping("/add-note")
-    public ResponseEntity addNote(@RequestBody @Valid Notes notes){
-        notesService.addNote(notes);
+    public ResponseEntity addNote(@RequestBody @Valid Note note, @RequestBody @Valid Long userId){
+        notesService.addNote(note, userId);
         return ResponseEntity.ok().body("note added successfully");
     }
 
 
     @PutMapping("/update-note/{id}")
-    public ResponseEntity updateNote(@PathVariable Integer id, @RequestBody @Valid Notes notes){
-        notesService.updateNote(id, notes);
+    public ResponseEntity updateNote(@PathVariable Long id, @RequestBody @Valid Note note){
+        notesService.updateNote(id, note);
         return ResponseEntity.ok().body("note updated successfully");
     }
 
     @DeleteMapping("/delete-note/{id}")
-    public ResponseEntity deleteNote(@PathVariable Integer id){
+    public ResponseEntity deleteNote(@PathVariable Long id){
         notesService.deleteNote(id);
         return ResponseEntity.ok().body("note deleted successfully");
     }
 
     @GetMapping("/get-note/{id}")
-    public ResponseEntity getNote(@PathVariable Integer id){
+    public ResponseEntity getNote(@PathVariable Long id){
         notesService.getNote(id);
         return ResponseEntity.ok().body(notesService.getNote(id));
     }

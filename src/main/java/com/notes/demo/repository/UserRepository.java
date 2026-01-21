@@ -1,17 +1,13 @@
 package com.notes.demo.repository;
 
-import com.notes.demo.model.Note;
+import com.notes.demo.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NotesRepository extends JpaRepository<Note, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
 
-
-    Note findSingelNoteById (Long id);
-
-
-
+    User findUserById (Long id);
 
 }
