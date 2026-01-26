@@ -54,7 +54,7 @@ public class SecurityConfig {
                                 "/api/v1/notes/logout",
                                 "/api/v1/notes/register",
                                 "/api/v1/notes/fetch-notes",
-                                "/api/v1/notes/add-note/{userIdCould not write JSON: Document nesting depth (501) exceeds the maximum allowed (500, from `StreamWriteConstraints.getMaxNestingDepth()`)]}",
+                                "/api/v1/notes/add-note/{userId}",
                                 "/api/v1/notes/update-note/{id}",
                                 "/api/v1/notes/delete-note/{id}",
                                 "/api/v1/notes/get-note/{id}",
