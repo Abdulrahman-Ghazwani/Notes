@@ -3,15 +3,18 @@ package com.notes.demo.service;
 import com.notes.demo.model.User;
 import com.notes.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService  {
     private final UserRepository userRepository;
-
+    private final MyUserDetailsService myUserDetailsService;
 
     public List<User> getAllUsers(){
         return userRepository.findAll();

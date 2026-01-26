@@ -22,8 +22,8 @@ public class NotesController {
     }
 
 
-    @PostMapping("/add-note")
-    public ResponseEntity addNote(@RequestBody @Valid Note note, @RequestBody @Valid Long userId){
+    @PostMapping("/add-note/{userId}")
+    public ResponseEntity addNote(@RequestBody @Valid Note note, @PathVariable Long userId){
         notesService.addNote(note, userId);
         return ResponseEntity.ok().body("note added successfully");
     }
@@ -46,5 +46,4 @@ public class NotesController {
         notesService.getNote(id);
         return ResponseEntity.ok().body(notesService.getNote(id));
     }
-
 }
